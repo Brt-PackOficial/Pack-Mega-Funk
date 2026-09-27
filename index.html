@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Bloqueio de Zoom em dispositivos móveis -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Brota Tchuca Oficial - Repertório Mega Funk</title>
+  
+  <!-- Favicon (Troque o URL pelo link do seu próprio ícone quando quiser) -->
+  <link rel="icon" type="image/x-icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYTG_onpTqNKi2x8LBcbVS0ajxp1e3WNbrN7Z-bm98w3pd8pqH54cctkAY&s=10">
+
+  <!-- Fontes externas e Ícones -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Arquivo de Estilos Externo -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body oncontextmenu="return false;">
+
+  <div class="container">
+    <div class="card">
+      <div class="brand-title">Brota Tchuca Oficial</div>
+      <h1 class="product-title">Pasta Mega Funk</h1>
+
+      <div class="badge-drive">
+        <i class="fa-brands fa-google-drive"></i> Envio via Google Drive (~5 GB)
+      </div>
+
+      <ul class="features-list">
+        <li><i class="fa-solid fa-check"></i> Conteúdo completo de Mega Funk</li>
+        <li><i class="fa-solid fa-check"></i> Cerca de 5 GB de arquivos atualizados</li>
+        <li><i class="fa-solid fa-check"></i> Acesso vitalício via Google Drive</li>
+        <li><i class="fa-solid fa-check"></i> Qualidade máxima de áudio</li>
+      </ul>
+
+      <div class="price-box">
+        <div class="price-label">Por apenas</div>
+        <div class="price-value"><span>R$</span> 15,90</div>
+      </div>
+
+      <button class="btn-buy" onclick="openModal()">
+        <i class="fa-solid fa-cart-shopping"></i> Comprar Agora
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal de Pagamento (Pix) -->
+  <div class="modal-overlay" id="paymentModal">
+    <div class="modal-content">
+      <button class="btn-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+
+      <h2>Pagamento via Pix</h2>
+      <p style="font-size: 0.85rem; color: #aaa; margin-top: 5px;">Escaneie o QR Code ou copie o código abaixo:</p>
+
+      <!-- QR Code Gerado Dinamicamente -->
+      <img id="qrCodeImg" class="qr-code-img" src="" alt="QR Code Pix" />
+
+      <div class="pix-input-group">
+        <textarea id="pixCode" class="pix-code-textarea" readonly></textarea>
+        <button id="copyBtn" class="btn-copy" onclick="copyPixCode()">
+          <i class="fa-regular fa-copy"></i> Copiar Código Pix
+        </button>
+      </div>
+
+      <hr style="border: 0; border-top: 1px solid #2a2a3d; margin: 15px 0;" />
+
+      <!-- Campo de E-mail Obrigatório -->
+      <div class="email-field">
+        <label for="userEmail">Digite seu e-mail para receber o acesso *</label>
+        <input type="email" id="userEmail" placeholder="seu-email@gmail.com" required />
+      </div>
+
+      <!-- Botão Enviar Comprovante -->
+      <button class="btn-wsp" onclick="sendWhatsapp()">
+        <i class="fa-brands fa-whatsapp"></i> Enviar Comprovante
+      </button>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2026 Brota Tchuca Oficial - Todos os direitos reservados.
+  </footer>
+
+  <!-- Arquivo de Script Externo -->
+  <script src="script.js"></script>
+</body>
+</html>
