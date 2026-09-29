@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Brota Tchuca Oficial - Repertório Mega Funk</title>
   
-  <!-- Favicon (Troque o URL pelo link do seu próprio ícone quando quiser) -->
+  <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYTG_onpTqNKi2x8LBcbVS0ajxp1e3WNbrN7Z-bm98w3pd8pqH54cctkAY&s=10">
 
   <!-- Fontes externas e Ícones -->
@@ -37,9 +37,21 @@
         <li><i class="fa-solid fa-check"></i> Atualizações mensais garantidas</li>
       </ul>
 
+      <!-- Oferta Especial (Order Bump) -->
+      <div class="order-bump-box" onclick="toggleOrderBumpByCard()">
+        <div class="bump-header">
+          <input type="checkbox" id="bumpCheckbox" onchange="toggleOrderBump(event)" />
+          <label for="bumpCheckbox">
+            <span class="bump-tag"><i class="fa-solid fa-fire"></i> OFERTA ESPECIAL</span>
+            <div class="bump-title">Adicionar Pasta de Músicas Extra</div>
+          </label>
+        </div>
+        <p class="bump-desc">Leve também nossa pasta com as músicas dos vídeos do perfil por apenas <strong>+ R$ 23,00</strong>!</p>
+      </div>
+
       <div class="price-box">
         <div class="price-label">Por apenas</div>
-        <div class="price-value"><span>R$</span> 15,90</div>
+        <div class="price-value"><span>R$</span> <span id="displayPrice">15,90</span></div>
       </div>
 
       <button class="btn-buy" onclick="openModal()">
@@ -55,6 +67,11 @@
 
       <h2>Pagamento via Pix</h2>
       <p style="font-size: 0.85rem; color: #aaa; margin-top: 5px;">Escaneie o QR Code ou copie o código abaixo:</p>
+
+      <!-- Indicador do valor do modal -->
+      <div class="modal-price-badge">
+        Total: <strong id="modalTotalPrice">R$ 15,90</strong>
+      </div>
 
       <!-- QR Code Gerado Dinamicamente -->
       <img id="qrCodeImg" class="qr-code-img" src="" alt="QR Code Pix" />
