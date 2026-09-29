@@ -132,8 +132,73 @@ body {
   color: #00e676;
 }
 
+/* Caixa de Oferta Extra (Order Bump) */
+.order-bump-box {
+  background: rgba(0, 230, 118, 0.05);
+  border: 2px dashed #00e676;
+  border-radius: 14px;
+  padding: 15px;
+  margin: 20px 0;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.order-bump-box:hover {
+  background: rgba(0, 230, 118, 0.1);
+  transform: translateY(-2px);
+}
+
+.bump-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.bump-header input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: #00e676;
+  margin-top: 3px;
+  cursor: pointer;
+}
+
+.bump-header label {
+  cursor: pointer;
+  width: 100%;
+}
+
+.bump-tag {
+  display: inline-block;
+  background: #00e676;
+  color: #000;
+  font-size: 0.65rem;
+  font-weight: 900;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.bump-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.bump-desc {
+  font-size: 0.82rem;
+  color: #bbb;
+  margin-top: 6px;
+  padding-left: 30px;
+}
+
+.bump-desc strong {
+  color: #00e676;
+}
+
 .price-box {
-  margin: 25px 0 15px 0;
+  margin: 15px 0 15px 0;
 }
 
 .price-box .price-label {
@@ -216,6 +281,17 @@ body {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
   max-height: 90vh;
   overflow-y: auto;
+}
+
+.modal-price-badge {
+  display: inline-block;
+  background: rgba(0, 230, 118, 0.15);
+  border: 1px solid #00e676;
+  color: #00e676;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  margin-top: 12px;
 }
 
 .btn-close {
