@@ -1,13 +1,43 @@
 // Dados configurados
 const SEU_NUMERO_WHATSAPP = "5598987261116";
-const CODIGO_PIX = "00020126730014BR.GOV.BCB.PIX0114+55989872611160233Pack Mega Funk - Brota Tchuca Ofc520400005303986540515.905802BR5925VINICIUS ALVES DE OLIVEIR6009SAO PAULO622605225Ellz6l6HeScJIFcWvo0BY6304DEFB";
 
-// Insere o código Pix no campo
-document.getElementById("pixCode").value = CODIGO_PIX;
+// Chaves Pix para cada opção
+const CODIGO_PIX_BASE = "00020126730014BR.GOV.BCB.PIX0114+55989872611160233Pack Mega Funk - Brota Tchuca Ofc520400005303986540515.905802BR5925VINICIUS ALVES DE OLIVEIR6009SAO PAULO622605225Ellz6l6HeScJIFcWvo0BY6304DEFB";
+const CODIGO_PIX_COMBO = "00020126360014BR.GOV.BCB.PIX0114+5598987261116520400005303986540538.905802BR5925VINICIUS ALVES DE OLIVEIR6009SAO PAULO622605221mkrSuLYX6wgSCMhkIU6MP6304F597";
 
-// Gera a imagem do QR Code
-const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(CODIGO_PIX)}`;
-document.getElementById("qrCodeImg").src = qrApiUrl;
+// Atualiza o Pix e QR Code conforme o estado da caixa
+function updatePixData() {
+  const isChecked = document.getElementById("bumpCheckbox").checked;
+  const activePix = isChecked ? CODIGO_PIX_COMBO : CODIGO_PIX_BASE;
+  const currentPrice = isChecked ? "38,90" : "15,90";
+  
+  // Atualiza textos de valores
+  document.getElementById("displayPrice").innerText = currentPrice;
+  document.getElementById("modalTotalPrice").innerText = `R$ ${currentPrice}`;
+  
+  // Insere a chave ativa no campo
+  document.getElementById("pixCode").value = activePix;
+  
+  // Atualiza o QR Code
+  const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(activePix)}`;
+  document.getElementById("qrCodeImg").src = qrApiUrl;
+}
+
+// Clique no checkbox
+function toggleOrderBump(e) {
+  e.stopPropagation();
+  updatePixData();
+}
+
+// Clique na caixa completa do Order Bump
+function toggleOrderBumpByCard() {
+  const checkbox = document.getElementById("bumpCheckbox");
+  checkbox.checked = !checkbox.checked;
+  updatePixData();
+}
+
+// Inicializa dados no carregamento
+updatePixData();
 
 // Abrir Modal e Travar a Rolagem do Fundo
 function openModal() {
@@ -53,6 +83,9 @@ function copyPixCode() {
 // Validação de E-mail + Redirecionamento WhatsApp
 function sendWhatsapp() {
   const emailInput = document.getElementById("userEmail").value.trim();
+  const isChecked = document.getElementById("bumpCheckbox").checked;
+  const valorTotal = isChecked ? "38,90" : "15,90";
+  const itemExtra = isChecked ? "\n• Inclui: Pasta de Músicas Extra (R$ 23,00)" : "";
   
   if (!emailInput || !emailInput.includes("@") || !emailInput.includes(".")) {
     alert("Por favor, preencha um e-mail válido antes de enviar o comprovante!");
@@ -60,7 +93,7 @@ function sendWhatsapp() {
     return;
   }
   
-  const mensagem = `Olá, Brota Tchuca Oficial! Fiz o pagamento de R$ 15,90 do Repertório Mega Funk.\n\nSegue o comprovante em anexo.\nMeu e-mail para liberação do acesso: *${emailInput}*`;
+  const mensagem = `Olá, Brota Tchuca Oficial! Fiz o pagamento de R$ ${valorTotal} do Repertório Mega Funk.${itemExtra}\n\nSegue o comprovante em anexo.\nMeu e-mail para liberação do acesso: *${emailInput}*`;
   
   const urlWhatsapp = `https://api.whatsapp.com/send?phone=${SEU_NUMERO_WHATSAPP}&text=${encodeURIComponent(mensagem)}`;
   
